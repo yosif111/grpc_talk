@@ -1,0 +1,19 @@
+syntax="proto3";
+
+message GreetRequest {
+    required string greet = 1;
+    required string greeterName = 2;
+}
+
+message GreetResponse {
+    required string greetReply = 1;
+
+}
+
+service GreetService {
+    rpc Greet(GreetRequest) returns (GreetResponse) {};
+    rpc LotsOfGreets(stream GreetRequest) returns (GreetResponse) {};
+    rpc LotsOfReplies(GreetRequest) returns (stream GreetResponse) {};
+    rpc Conversation(stream GreetRequest) returns (stream GreetResponse) {};
+
+}
